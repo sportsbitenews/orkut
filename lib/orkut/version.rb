@@ -6,7 +6,7 @@ module Orkut
     end
 
     def self.minor
-      1
+      0
     end
 
     def self.patch
@@ -14,7 +14,7 @@ module Orkut
     end
 
     def self.pre
-      nil
+      1 #nil
     end
 
     def self.to_s
