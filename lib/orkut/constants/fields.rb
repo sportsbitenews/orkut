@@ -1,3 +1,5 @@
+require 'orkut/constants/params'
+
 module Orkut
   module Constants
     module Fields
