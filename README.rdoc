@@ -1,0 +1,11 @@
+= orkut
+
+A Ruby wrapper for the Orkut REST/RPC API.
+
+== Getting started
+
+  gem install orkut
+
+== Copyright
+
+Copyright (c) 2011 Umanni. See LICENSE for details.
