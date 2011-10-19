@@ -22,4 +22,5 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_dependency 'omniauth', [">= 0.3.0"]
+  s.add_dependency 'multi_json'
 end

@@ -3,6 +3,7 @@ require 'orkut/constants/group'
 require 'orkut/constants/internal_constants'
 require 'orkut/constants/method_names'
 require 'orkut/constants/params'
+require 'multi_json'
 
 module Orkut
   class Client
@@ -23,7 +24,7 @@ module Orkut
           Orkut::Constants::Fields::ID     => ''+Orkut::Constants::MethodNames::ACTIVITIES_GET,
           Orkut::Constants::Fields::METHOD => Orkut::Constants::MethodNames::ACTIVITIES_GET
         }]
-        post(nil, params.to_s, default_headers).body
+        MultiJson.decode(post(nil, params.to_s, default_headers).body)
       end
       
       def scraps_timeline(options={})
@@ -39,7 +40,7 @@ module Orkut
           Orkut::Constants::Fields::ID     => '-'+Orkut::Constants::MethodNames::MESSAGES_GET,
           Orkut::Constants::Fields::METHOD => Orkut::Constants::MethodNames::MESSAGES_GET
         }]
-        post(nil, params.to_s, default_headers).body
+        MultiJson.decode(post(nil, params.to_s, default_headers).body)
       end
       
       def default_headers
