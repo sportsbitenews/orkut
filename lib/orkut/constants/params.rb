@@ -15,7 +15,6 @@ module Orkut
       end
       
       ACLENTRY          = 'aclentry'
-      ACTIVITY          = 'activity'
       ALBUM             = 'album'
       ALBUM_ID          = 'albumId'
       CAPTCHA_ANSWER    = 'captchaAnswer'
@@ -23,13 +22,10 @@ module Orkut
       CAPTCHA_URL       = 'captchaUrl'
       COMMENT           = 'comment'
       COMMENT_ID        = 'commentId'
-      COUNT             = 'count'
       FIELDS            = 'fields'
-      GROUP_ID          = 'groupId'
       LAST_KEY          = 'lastKey'
       MEDIA_ITEM        = 'mediaItem'
       MEDIA_ITEM_ID     = 'mediaItemId'
-      MESSAGE           = 'message'
       MSG_ID            = 'msgId'
       NOTIFICATION      = 'notification'
       OWNER_ID          = 'ownerId'
@@ -39,7 +35,6 @@ module Orkut
       SORT_BY           = 'sortBy'
       TYPE              = 'type'
       UPDATED_BEFORE    = 'updatedBefore'
-      USER_ID           = 'userId'
     end
   end
 end

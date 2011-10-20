@@ -13,6 +13,7 @@ module Orkut
         ACCESSOR_TYPE = 'accessorType'
       end
       
+      ACTIVITY = 'activity'
       BIRTHDAY = 'birthday'
       COUNTRY = 'country'
       CURRENT_LOCATION = 'currentLocation'
@@ -32,6 +33,7 @@ module Orkut
       BODY = 'body'
       COALESCE = 'coalesce'
       COMMENTS = 'comments'
+      COUNT = 'count'
       CREATED = 'created'
       DESCRIPTION = 'description'
       DISPLAY_NAME = 'displayName'
@@ -42,6 +44,7 @@ module Orkut
       FROM_USER_ID = 'fromUserId'
       FROM_USER_PROFILE = 'fromUserProfile'
       GENDER = 'gender'
+      GROUP_ID = 'groupId'
       ID = 'id'
 
       # the json field for location
@@ -53,6 +56,7 @@ module Orkut
       MEDIA_MIME_TYPE = 'mediaMimeType'
       # media types in the album
       MEDIA_TYPE = 'mediaType'
+      MESSAGE = 'message'
       MESSAGE_TYPE = 'messageType'
       METHOD = 'method'
       NAME = 'name'
@@ -81,6 +85,7 @@ module Orkut
       TOTAL_RESULTS = 'totalResults'
       TYPE = 'type'
       URL = 'url'
+      USER_ID = 'userId'
       VALUE = 'value'
       YOUTUBE_URL = 'youtubeUrl'
       VIDEO_DURATION = 'durationInSec'
