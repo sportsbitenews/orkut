@@ -34,7 +34,6 @@ module Orkut
       RELEVANT_USER_IDS = 'relevantUserIds'
       SORT_BY           = 'sortBy'
       TYPE              = 'type'
-      UPDATED_BEFORE    = 'updatedBefore'
     end
   end
 end

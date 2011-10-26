@@ -84,6 +84,7 @@ module Orkut
       TITLE = 'title'
       TOTAL_RESULTS = 'totalResults'
       TYPE = 'type'
+      UPDATED_BEFORE = 'updatedBefore'
       URL = 'url'
       USER_ID = 'userId'
       VALUE = 'value'

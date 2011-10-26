@@ -1,4 +1,5 @@
 require 'orkut/version'
+require 'orkut/error'
 require 'orkut/constants/internal_constants'
 
 module Orkut
@@ -6,6 +7,8 @@ module Orkut
     module Base
       
       DEFAULT_COUNT = 40
+
+      DEFAULT_DATETIME_FORMAT = '%Y-%m-%dT%I:%M:%SZ'
       
       def default_headers
         return {
@@ -18,6 +21,16 @@ module Orkut
         @request_id = 0
         @request_id += 1
         @request_id
+      end
+
+      def format_datetime datetime
+        if datetime.kind_of?(Time)
+          return datetime.utc.strftime(DEFAULT_DATETIME_FORMAT)
+        elsif datetime.kind_of?(String)
+          return Time.at(datetime).utc.strftime(DEFAULT_DATETIME_FORMAT)
+        else
+          raise(Orkut::Error, 'Invalid datetime')
+        end
       end
     end
   end
