@@ -25,7 +25,7 @@ module Orkut
           Orkut::Constants::Fields::METHOD => Orkut::Constants::MethodNames::ACTIVITIES_GET
         }]
         unless options[:updated_before].blank?
-          params[Orkut::Constants::Fields::PARAMS.to_sym][Orkut::Constants::Fields::UPDATED_BEFORE.to_sym] = format_datetime(options[:updated_before])
+          params.first[Orkut::Constants::Fields::PARAMS][Orkut::Constants::Fields::UPDATED_BEFORE] = format_datetime(options[:updated_before])
         end
         MultiJson.decode(post(nil, params.to_s, default_headers).body)
       end
