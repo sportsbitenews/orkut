@@ -8,7 +8,7 @@ module Orkut
       
       DEFAULT_COUNT = 40
 
-      DEFAULT_DATETIME_FORMAT = '%Y-%m-%dT%I:%M:%SZ'
+      DEFAULT_DATETIME_FORMAT = '%Y-%m-%dT%H:%M:%SZ'
       
       def default_headers
         return {
