@@ -49,7 +49,7 @@ module Orkut
       def home_timeline22(options={})
         params = [{
           Orkut::Constants::Fields::PARAMS => {
-            Orkut::Constants::Fields::FIELDS => ['comments'],
+            Orkut::Constants::Fields::FIELDS => ['messages'],
             Orkut::Constants::Fields::GROUP_ID    => Orkut::Constants::Group::ALL,
             Orkut::Constants::Fields::USER_ID     => Orkut::Constants::InternalConstants::USERID_ME,
             Orkut::Constants::Fields::COUNT       => (options[:count] || Orkut::Client::Base::DEFAULT_COUNT),
