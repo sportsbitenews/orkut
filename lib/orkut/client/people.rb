@@ -25,6 +25,29 @@ module Orkut
         }]
         MultiJson.decode(post(nil, params.to_s, default_headers).body)
       end
+
+      def get_person_full_profile(options={})
+        params = [{
+          Orkut::Constants::Fields::PARAMS => {
+            Orkut::Constants::Fields::FIELDS => [
+                Orkut::Constants::Fields::NAME,
+                Orkut::Constants::Fields::THUMBNAIL_URL,
+                Orkut::Constants::Fields::PROFILE_URL,
+                Orkut::Constants::Fields::STATUS,
+                Orkut::Constants::Fields::EMAILS,
+                Orkut::Constants::Fields::GENDER,
+                Orkut::Constants::Fields::PHONE_NUMBERS,
+                Orkut::Constants::Fields::BIRTHDAY,
+                Orkut::Constants::Fields::CURRENT_LOCATION
+            ],
+            Orkut::Constants::Fields::GROUP_ID => Orkut::Constants::Group::SELF,
+            Orkut::Constants::Fields::USER_ID => (options[:user_id] || Orkut::Constants::InternalConstants::USERID_ME)
+          },
+          Orkut::Constants::Fields::ID     => request_id.to_s+'-'+Orkut::Constants::MethodNames::PEOPLE_GET,
+          Orkut::Constants::Fields::METHOD => Orkut::Constants::MethodNames::PEOPLE_GET
+        }]
+        MultiJson.decode(post(nil, params.to_s, default_headers).body)
+      end
       
     end
   end

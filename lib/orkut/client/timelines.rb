@@ -24,15 +24,9 @@ module Orkut
           Orkut::Constants::Fields::ID     => request_id.to_s+'-'+Orkut::Constants::MethodNames::ACTIVITIES_GET,
           Orkut::Constants::Fields::METHOD => Orkut::Constants::MethodNames::ACTIVITIES_GET
         }]
-        teste = "[{\"params\":{"
         unless options[:updated_before].blank?
           params.first[Orkut::Constants::Fields::PARAMS][Orkut::Constants::Fields::UPDATED_BEFORE] = format_datetime(options[:updated_before])
-          teste += "\"updatedBefore\":\""+format_datetime(options[:updated_before])+"\","
         end
-        teste += "\"groupId\":\"@all\",\"userId\":\"@me\",\"count\":40,\"coalesce\":true,\"startIndex\":0},\"id\":\"0-activities.get\",\"method\":\"activities.get\"}]\""
-        puts '*********************************************************************************************************'
-        puts teste
-        puts '*********************************************************************************************************'
         MultiJson.decode(post(nil, params.to_s, default_headers).body)
       end
       

@@ -13,7 +13,9 @@ module Orkut
         ACCESSOR_TYPE = 'accessorType'
       end
       
+      ACTIVITIES = 'activities'
       ACTIVITY = 'activity'
+      ACTIVITY_ID = 'activityId'
       BIRTHDAY = 'birthday'
       COUNTRY = 'country'
       CURRENT_LOCATION = 'currentLocation'
@@ -41,6 +43,7 @@ module Orkut
       # The list of entries in an ACL
       ENTRIES = 'entries'
       ERROR_TYPE = 'errorType'
+      FIELDS = 'fields'
       FROM_USER_ID = 'fromUserId'
       FROM_USER_PROFILE = 'fromUserProfile'
       GENDER = 'gender'
