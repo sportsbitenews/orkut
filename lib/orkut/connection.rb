@@ -19,7 +19,8 @@ module Orkut
     end
 
     def get_connection_hash
-      return get_token_values(connection)
+      con = connection()
+      return get_token_values(con)
     end
 
     private
