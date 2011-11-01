@@ -45,6 +45,7 @@ module Orkut
       # The list of entries in an ACL
       ENTRIES = 'entries'
       ERROR_TYPE = 'errorType'
+      EXTRA_PARAMS = 'extraParams'
       FIELDS = 'fields'
       FROM_USER_ID = 'fromUserId'
       FROM_USER_PROFILE = 'fromUserProfile'

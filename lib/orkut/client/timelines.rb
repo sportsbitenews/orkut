@@ -50,9 +50,10 @@ module Orkut
       
       def home_timeline22(options={})
         params = {
-          Orkut::Constants::Fields::USER_ID    => Orkut::Constants::InternalConstants::USERID_ME_SIMPLE,
-          Orkut::Constants::Fields::COLLECTION => Orkut::Constants::Collection::STREAM,
-          Orkut::Constants::Fields::ALT        => Orkut::Constants::Params::JSON
+          Orkut::Constants::Fields::USER_ID      => Orkut::Constants::InternalConstants::USERID_ME_SIMPLE,
+          Orkut::Constants::Fields::COLLECTION   => Orkut::Constants::Collection::STREAM,
+          Orkut::Constants::Fields::ALT          => Orkut::Constants::Params::JSON,
+          Orkut::Constants::Fields::EXTRA_PARAMS => options
         }
         execute(Orkut::Constants::Fields::ACTIVITIES, Orkut::Constants::Action::LIST, params)
       end
