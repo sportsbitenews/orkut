@@ -23,7 +23,7 @@ module Orkut
           Orkut::Constants::Fields::ID     => request_id.to_s+'-'+Orkut::Constants::MethodNames::PEOPLE_GET,
           Orkut::Constants::Fields::METHOD => Orkut::Constants::MethodNames::PEOPLE_GET
         }]
-        MultiJson.decode(post(nil, params.to_s, default_headers).body)
+        MultiJson.decode(post_v1(nil, params.to_s, default_headers).body)
       end
 
       def get_person_full_profile(options={})
@@ -46,7 +46,7 @@ module Orkut
           Orkut::Constants::Fields::ID     => request_id.to_s+'-'+Orkut::Constants::MethodNames::PEOPLE_GET,
           Orkut::Constants::Fields::METHOD => Orkut::Constants::MethodNames::PEOPLE_GET
         }]
-        MultiJson.decode(post(nil, params.to_s, default_headers).body)
+        MultiJson.decode(post_v1(nil, params.to_s, default_headers).body)
       end
       
     end

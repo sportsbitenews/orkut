@@ -6,6 +6,7 @@ module Orkut
       JSON_CONTENT_TYPE = 'application/json'
       USERID_ME = '@me'
       USERID_VIEWER = '@viewer'
+      USERID_ME_SIMPLE = 'me'
 
       module Values
         ALBUMS = 'albums'

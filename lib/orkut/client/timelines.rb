@@ -1,4 +1,6 @@
 require 'orkut/client/base'
+require 'orkut/constants/action'
+require 'orkut/constants/collection'
 require 'orkut/constants/fields'
 require 'orkut/constants/group'
 require 'orkut/constants/internal_constants'
@@ -27,7 +29,7 @@ module Orkut
         unless options[:updated_before].blank?
           params.first[Orkut::Constants::Fields::PARAMS][Orkut::Constants::Fields::UPDATED_BEFORE] = format_datetime(options[:updated_before])
         end
-        MultiJson.decode(post(nil, params.to_s, default_headers).body)
+        MultiJson.decode(post_v1(nil, params.to_s, default_headers).body)
       end
       
       def scraps_timeline(options={})
@@ -43,26 +45,16 @@ module Orkut
           Orkut::Constants::Fields::ID     => request_id.to_s+'-'+Orkut::Constants::MethodNames::MESSAGES_GET,
           Orkut::Constants::Fields::METHOD => Orkut::Constants::MethodNames::MESSAGES_GET
         }]
-        MultiJson.decode(post(nil, params.to_s, default_headers).body)
+        MultiJson.decode(post_v1(nil, params.to_s, default_headers).body)
       end
       
       def home_timeline22(options={})
-        params = [{
-          Orkut::Constants::Fields::PARAMS => {
-            Orkut::Constants::Fields::FIELDS => ['messages'],
-            Orkut::Constants::Fields::GROUP_ID    => Orkut::Constants::Group::ALL,
-            Orkut::Constants::Fields::USER_ID     => Orkut::Constants::InternalConstants::USERID_ME,
-            Orkut::Constants::Fields::COUNT       => (options[:count] || Orkut::Client::Base::DEFAULT_COUNT),
-            Orkut::Constants::Fields::COALESCE    => true,
-            Orkut::Constants::Fields::START_INDEX => 0
-          },
-          Orkut::Constants::Fields::ID     => request_id.to_s+'-'+Orkut::Constants::MethodNames::ACTIVITIES_GET,
-          Orkut::Constants::Fields::METHOD => Orkut::Constants::MethodNames::ACTIVITIES_GET
-        }]
-        unless options[:updated_before].blank?
-          params.first[Orkut::Constants::Fields::PARAMS][Orkut::Constants::Fields::UPDATED_BEFORE] = format_datetime(options[:updated_before])
-        end
-        MultiJson.decode(post(nil, params.to_s, default_headers).body)
+        params = {
+          Orkut::Constants::Fields::USER_ID    => Orkut::Constants::InternalConstants::USERID_ME_SIMPLE,
+          Orkut::Constants::Fields::COLLECTION => Orkut::Constants::Collection::STREAM,
+          Orkut::Constants::Fields::ALT        => Orkut::Constants::Params::JSON
+        }
+        execute(Orkut::Constants::Fields::ACTIVITIES, Orkut::Constants::Action::LIST, params)
       end
     end
   end

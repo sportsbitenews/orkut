@@ -16,6 +16,7 @@ module Orkut
       ACTIVITIES = 'activities'
       ACTIVITY = 'activity'
       ACTIVITY_ID = 'activityId'
+      ALT = 'alt'
       BIRTHDAY = 'birthday'
       COUNTRY = 'country'
       CURRENT_LOCATION = 'currentLocation'
@@ -34,6 +35,7 @@ module Orkut
 
       BODY = 'body'
       COALESCE = 'coalesce'
+      COLLECTION = 'collection'
       COMMENTS = 'comments'
       COUNT = 'count'
       CREATED = 'created'

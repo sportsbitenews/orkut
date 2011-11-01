@@ -22,6 +22,7 @@ module Orkut
       CAPTCHA_URL       = 'captchaUrl'
       COMMENT           = 'comment'
       COMMENT_ID        = 'commentId'
+      JSON              = 'json'
       LAST_KEY          = 'lastKey'
       MEDIA_ITEM        = 'mediaItem'
       MEDIA_ITEM_ID     = 'mediaItemId'
