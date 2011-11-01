@@ -27,7 +27,7 @@ module Orkut
 
       def connection_v1(options={})
         access_token = nil
-        if authenticated?
+        if authenticated_v1?
           client_options = {
             :site => site,
             :request_token_path => request_token_path,
@@ -45,39 +45,37 @@ module Orkut
       end
 
       def connection(options={})
-        client = nil
-        if authenticated?
-          client = Google::APIClient.new
+        client = Google::APIClient.new
 
-          client.authorization.client_id     = client_id
-          client.authorization.client_secret = client_secret
-          client.authorization.scope         = scope
-          client.authorization.redirect_uri  = redirect_uri
-          client.authorization.code          = code
+        client.authorization.client_id     = client_id
+        client.authorization.client_secret = client_secret
+        client.authorization.scope         = scope
+        client.authorization.redirect_uri  = redirect_uri
+        client.authorization.code          = code
 
-          if !options[:token_values].blank?
-            client.authorization.update_token!(options[:token_values])
-            ::Orkut.configure do |config|
-              config.refresh_token = options[:token_values][:refresh_token]
-              config.access_token = options[:token_values][:access_token]
-              config.expires_in = options[:token_values][:expires_in]
-              config.issued_at = options[:token_values][:issued_at]
+        if !options[:token_values].blank?
+          client.authorization.update_token!(options[:token_values])
+          ::Orkut.configure do |config|
+            config.refresh_token = options[:token_values][:refresh_token]
+            config.access_token = options[:token_values][:access_token]
+            config.expires_in = options[:token_values][:expires_in]
+            config.issued_at = options[:token_values][:issued_at]
+          end
+        else
+            if !refresh_token.blank? and !access_token.blank? and !expires_in.blank? and !issued_at.blank?
+              client.authorization.update_token!(credentials)
             end
-          else
-              if !refresh_token.blank? and !access_token.blank? and !expires_in.blank? and !issued_at.blank?
-                client.authorization.update_token!(credentials)
-              end
-          end
-
-          client.authorization.fetch_access_token!
-
-          update_token_values(client.authorization)
-
-          orkut = client.discovered_api('orkut', 'v2')
-          unless client.authorization.access_token
-            raise(Orkut::Error, 'Invalid access token')
-          end
         end
+
+        client.authorization.fetch_access_token!
+
+        update_token_values(client.authorization)
+
+        orkut = client.discovered_api('orkut', 'v2')
+        unless client.authorization.access_token
+          raise(Orkut::Error, 'Invalid access token')
+        end
+
         client
       end
 

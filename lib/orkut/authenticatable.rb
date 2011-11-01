@@ -26,7 +26,11 @@ module Orkut
     #
     # @return [Boolean]
     def authenticated?
-      credentials.values.all? and credentials_v1.values.all?
+      credentials.values.all?
+    end
+
+    def authenticated_v1?
+      credentials_v1.values.all?
     end
 
   end
