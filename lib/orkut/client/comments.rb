@@ -38,7 +38,7 @@ module Orkut
           Orkut::Constants::Fields::KIND    => Orkut::Constants::InternalConstants::COMMENT_KIND,
           Orkut::Constants::Fields::CONTENT => options[:content]
         }
-        MultiJson.decode(execute(Orkut::Constants::Fields::COMMENTS, Orkut::Constants::Action::INSERT, params, body))
+        MultiJson.decode(execute(Orkut::Constants::Fields::COMMENTS, Orkut::Constants::Action::INSERT, params, body.to_s))
       end
     end
   end

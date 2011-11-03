@@ -53,7 +53,7 @@ module Orkut
       connection_v1.delete(verify_path(path), headers)
     end
 
-    def execute(entity, action, params = {}, body = {})
+    def execute(entity, action, params = {}, body = '')
       raise(Orkut::Error, 'Parameters entity and action cannot be nil') if entity.blank? or action.blank?
       raise(Orkut::Error, 'Parameter body cannot be nil or empty') if params.blank? or params.empty?
 
