@@ -14,7 +14,7 @@ module Orkut
     module Timelines
       include Base
 
-      def home_timeline(options={})
+      def home_timeline_v1(options={})
         params = [{
           Orkut::Constants::Fields::PARAMS => {
             Orkut::Constants::Fields::GROUP_ID    => Orkut::Constants::Group::ALL,
@@ -32,7 +32,7 @@ module Orkut
         MultiJson.decode(post_v1(nil, params.to_s, default_headers).body)
       end
       
-      def scraps_timeline(options={})
+      def scraps_timeline_v1(options={})
         params = [{
           Orkut::Constants::Fields::PARAMS => {
             Orkut::Constants::Fields::PAGE_TYPE      => Orkut::Constants::Params::PageType::FIRST,
@@ -48,14 +48,32 @@ module Orkut
         MultiJson.decode(post_v1(nil, params.to_s, default_headers).body)
       end
       
-      def home_timeline22(options={})
+      def home_timeline(options={})
         params = {
           Orkut::Constants::Fields::USER_ID      => Orkut::Constants::InternalConstants::USERID_ME_SIMPLE,
           Orkut::Constants::Fields::COLLECTION   => Orkut::Constants::Collection::STREAM,
           Orkut::Constants::Fields::ALT          => Orkut::Constants::Params::JSON,
+          Orkut::Constants::Fields::MAX_RESULTS  => (options[:count] || Orkut::Client::Base::DEFAULT_COUNT),
           Orkut::Constants::Fields::EXTRA_PARAMS => options
         }
-        execute(Orkut::Constants::Fields::ACTIVITIES, Orkut::Constants::Action::LIST, params)
+        unless options[:page_token].blank?
+          params[Orkut::Constants::Fields::PAGE_TOKEN] = options[:page_token]
+        end
+        MultiJson.decode(execute(Orkut::Constants::Fields::ACTIVITIES, Orkut::Constants::Action::LIST, params))
+      end
+
+      def scraps_timeline(options={})
+        params = {
+          Orkut::Constants::Fields::USER_ID      => Orkut::Constants::InternalConstants::USERID_ME_SIMPLE,
+          Orkut::Constants::Fields::COLLECTION   => Orkut::Constants::Collection::SCRAPS,
+          Orkut::Constants::Fields::ALT          => Orkut::Constants::Params::JSON,
+          Orkut::Constants::Fields::MAX_RESULTS  => (options[:count] || Orkut::Client::Base::DEFAULT_COUNT),
+          Orkut::Constants::Fields::EXTRA_PARAMS => options
+        }
+        unless options[:page_token].blank?
+          params[Orkut::Constants::Fields::PAGE_TOKEN] = options[:page_token]
+        end
+        MultiJson.decode(execute(Orkut::Constants::Fields::ACTIVITIES, Orkut::Constants::Action::LIST, params))
       end
     end
   end

@@ -56,6 +56,7 @@ module Orkut
       # the json field for location
       LOCATION = 'location'
       # the json field for count of media items in album
+      MAX_RESULTS = 'maxResults'
       MEDIA_ITEM_COUNT = 'mediaItemCount'
       MEDIA_ITEMS = 'mediaItems'
       # media mime types in the album
@@ -70,6 +71,7 @@ module Orkut
       NAME_FAMILY_NAME = 'familyName'
       NAME_GIVEN_NAME = 'givenName'
       NOTE = 'note'
+      PAGE_TOKEN = 'pageToken'
       PAGE_TYPE = 'pageType'
       PAGE_URL = 'pageUrl'
       PARAMS = 'params'

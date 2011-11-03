@@ -61,8 +61,8 @@ module Orkut
 
       orkut = connection.discovered_api('orkut', 'v2')
       response = connection(extra).execute(orkut.try(entity.to_sym).try(action.to_sym), params)
-      #status, headers, body = response
-      response
+      status, headers, body = response
+      body
     end
     
     def verify_path(path)
