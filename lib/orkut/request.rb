@@ -53,14 +53,14 @@ module Orkut
       connection_v1.delete(verify_path(path), headers)
     end
 
-    def execute(entity, action, params = {})
+    def execute(entity, action, params = {}, body = {})
       raise(Orkut::Error, 'Parameters entity and action cannot be nil') if entity.blank? or action.blank?
       raise(Orkut::Error, 'Parameter body cannot be nil or empty') if params.blank? or params.empty?
 
       extra = params.delete(Orkut::Constants::Fields::EXTRA_PARAMS)
 
       orkut = connection.discovered_api('orkut', 'v2')
-      response = connection(extra).execute(orkut.try(entity.to_sym).try(action.to_sym), params)
+      response = connection(extra).execute(orkut.try(entity.to_sym).try(action.to_sym), params, body)
       status, headers, body = response
       return body.first if status == 200
       ''

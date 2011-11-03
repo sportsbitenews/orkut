@@ -32,11 +32,13 @@ module Orkut
         params = {
           Orkut::Constants::Fields::USER_ID      => Orkut::Constants::InternalConstants::USERID_ME_SIMPLE,
           Orkut::Constants::Fields::ACTIVITY_ID  => options[:activity_id],
-          Orkut::Constants::Fields::EXTRA_PARAMS => options,
-          Orkut::Constants::Fields::KIND         => Orkut::Constants::InternalConstants::COMMENT_KIND,
-          Orkut::Constants::Fields::CONTENT      => options[:content]
+          Orkut::Constants::Fields::EXTRA_PARAMS => options
         }
-        MultiJson.decode(execute(Orkut::Constants::Fields::COMMENTS, Orkut::Constants::Action::INSERT, params))
+        body = {
+          Orkut::Constants::Fields::KIND    => Orkut::Constants::InternalConstants::COMMENT_KIND,
+          Orkut::Constants::Fields::CONTENT => options[:content]
+        }
+        MultiJson.decode(execute(Orkut::Constants::Fields::COMMENTS, Orkut::Constants::Action::INSERT, params, body))
       end
     end
   end
