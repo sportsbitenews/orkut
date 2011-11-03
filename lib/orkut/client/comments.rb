@@ -18,7 +18,6 @@ module Orkut
         params = {
           Orkut::Constants::Fields::USER_ID      => Orkut::Constants::InternalConstants::USERID_ME_SIMPLE,
           Orkut::Constants::Fields::ACTIVITY_ID  => options[:activity_id],
-          Orkut::Constants::Fields::ALT          => Orkut::Constants::Params::JSON,
           Orkut::Constants::Fields::MAX_RESULTS  => (options[:count] || Orkut::Client::Base::DEFAULT_COUNT).to_s,
           Orkut::Constants::Fields::EXTRA_PARAMS => options
         }
@@ -37,7 +36,7 @@ module Orkut
           Orkut::Constants::Fields::KIND         => Orkut::Constants::InternalConstants::COMMENT_KIND,
           Orkut::Constants::Fields::CONTENT      => options[:content]
         }
-        MultiJson.decode(execute(Orkut::Constants::Fields::COMMENTS, Orkut::Constants::Action::LIST, params))
+        MultiJson.decode(execute(Orkut::Constants::Fields::COMMENTS, Orkut::Constants::Action::INSERT, params))
       end
     end
   end
