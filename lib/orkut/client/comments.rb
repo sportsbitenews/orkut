@@ -17,6 +17,7 @@ module Orkut
         raise(Orkut::Error, 'Parameter activity_id cannot be nil') if options[:activity_id].blank?
         params = {
           Orkut::Constants::Fields::USER_ID      => Orkut::Constants::InternalConstants::USERID_ME_SIMPLE,
+          Orkut::Constants::Fields::ALT          => Orkut::Constants::Params::JSON,
           Orkut::Constants::Fields::ACTIVITY_ID  => options[:activity_id],
           Orkut::Constants::Fields::MAX_RESULTS  => (options[:count] || Orkut::Client::Base::DEFAULT_COUNT).to_s,
           Orkut::Constants::Fields::EXTRA_PARAMS => options
@@ -31,6 +32,7 @@ module Orkut
         raise(Orkut::Error, 'Parameters activity_id and content cannot be nil') if options[:activity_id].blank? or options[:content].blank?
         params = {
           Orkut::Constants::Fields::USER_ID      => Orkut::Constants::InternalConstants::USERID_ME_SIMPLE,
+          Orkut::Constants::Fields::ALT          => Orkut::Constants::Params::JSON,
           Orkut::Constants::Fields::ACTIVITY_ID  => options[:activity_id],
           Orkut::Constants::Fields::EXTRA_PARAMS => options
         }
