@@ -1,3 +1,4 @@
+require 'orkut/error'
 require 'orkut/client/base'
 require 'orkut/constants/fields'
 require 'orkut/constants/group'
@@ -13,6 +14,7 @@ module Orkut
       # TODO implements features
 
       def get_comments(options={})
+        raise(Orkut::Error, 'Parameter activity_id cannot be nil') if options[:activity_id].blank?
         params = {
           Orkut::Constants::Fields::USER_ID      => Orkut::Constants::InternalConstants::USERID_ME_SIMPLE,
           Orkut::Constants::Fields::ACTIVITY_ID  => options[:activity_id],
@@ -27,7 +29,15 @@ module Orkut
       end
 
       def insert_comment(options={})
-
+        raise(Orkut::Error, 'Parameters activity_id and content cannot be nil') if options[:activity_id].blank? or options[:content].blank?
+        params = {
+          Orkut::Constants::Fields::USER_ID      => Orkut::Constants::InternalConstants::USERID_ME_SIMPLE,
+          Orkut::Constants::Fields::ACTIVITY_ID  => options[:activity_id],
+          Orkut::Constants::Fields::EXTRA_PARAMS => options,
+          Orkut::Constants::Fields::KIND         => Orkut::Constants::InternalConstants::COMMENT_KIND,
+          Orkut::Constants::Fields::CONTENT      => options[:content]
+        }
+        MultiJson.decode(execute(Orkut::Constants::Fields::COMMENTS, Orkut::Constants::Action::LIST, params))
       end
     end
   end

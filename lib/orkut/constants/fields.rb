@@ -37,6 +37,7 @@ module Orkut
       COALESCE = 'coalesce'
       COLLECTION = 'collection'
       COMMENTS = 'comments'
+      CONTENT = 'content'
       COUNT = 'count'
       CREATED = 'created'
       DESCRIPTION = 'description'
@@ -51,6 +52,7 @@ module Orkut
       FROM_USER_PROFILE = 'fromUserProfile'
       GENDER = 'gender'
       GROUP_ID = 'groupId'
+      KIND = 'kind'
       ID = 'id'
 
       # the json field for location

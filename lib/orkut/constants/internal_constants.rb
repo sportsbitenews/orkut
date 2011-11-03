@@ -8,6 +8,8 @@ module Orkut
       USERID_VIEWER = '@viewer'
       USERID_ME_SIMPLE = 'me'
 
+      COMMENT_KIND = 'orkut#comment'
+
       module Values
         ALBUMS = 'albums'
         MEDIAITEMS = 'mediaitems'
