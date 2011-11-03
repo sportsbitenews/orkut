@@ -25,6 +25,10 @@ module Orkut
         end
         MultiJson.decode(execute(Orkut::Constants::Fields::COMMENTS, Orkut::Constants::Action::LIST, params))
       end
+
+      def insert_comment(options={})
+
+      end
     end
   end
 end
