@@ -14,7 +14,7 @@ module Orkut
     end
 
     def self.pre
-      19 #nil
+      20 #nil
     end
 
     def self.to_s
