@@ -69,14 +69,9 @@ module Orkut
               end
           end
 
-	  puts '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'
-	  puts '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'
-	  puts @client.inspect
-	  puts @client.authorization.inspect
-	  puts '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'
-	  puts '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'
-
-          @client.authorization.fetch_access_token!
+	  if !refresh_token.blank? and !access_token.blank? and !expires_in.blank? and !issued_at.blank?
+             @client.authorization.fetch_access_token!
+	  end
 
           update_token_values(@client.authorization)
 
