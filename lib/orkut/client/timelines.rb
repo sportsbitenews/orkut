@@ -59,7 +59,16 @@ module Orkut
         unless options[:page_token].blank?
           params[Orkut::Constants::Fields::PAGE_TOKEN] = options[:page_token]
         end
-        MultiJson.decode(execute(Orkut::Constants::Fields::ACTIVITIES, Orkut::Constants::Action::LIST, params))
+	result = execute(Orkut::Constants::Fields::ACTIVITIES, Orkut::Constants::Action::LIST, params)
+	begin        
+	  MultiJson.decode(result)
+        rescue StandardError => exception
+	  puts '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'
+	  puts exception.message
+	  puts result.inspect
+	  puts params.inspect
+	  puts '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'
+        end
       end
 
       def scraps_timeline(options={})
