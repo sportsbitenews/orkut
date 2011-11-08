@@ -77,6 +77,8 @@ module Orkut
       PAGE_TYPE = 'pageType'
       PAGE_URL = 'pageUrl'
       PARAMS = 'params'
+      PERSON = 'person'
+      PERSON_ID = 'personId'
       PHONE_NUMBERS = 'phoneNumbers'
       POSTED_TIME = 'postedTime'
       PROFILE_FIELDS = 'profileFields'

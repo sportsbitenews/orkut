@@ -40,6 +40,22 @@ module Orkut
         }]
         MultiJson.decode(post_v1(nil, params.to_s, default_headers).body)
       end
+
+      def update_status(options={})
+        raise(Orkut::Error, "Parameters body cannot be nil") if options[:body].blank?
+        params = [{
+          Orkut::Constants::Fields::PARAMS => {
+            Orkut::Constants::Fields::GROUP_ID     => Orkut::Constants::Group::SELF,
+            Orkut::Constants::Fields::USER_ID      => Orkut::Constants::InternalConstants::USERID_ME,
+            Orkut::Constants::Fields::PERSON => {
+              Orkut::Constants::Fields::STATUS  => options[:status]
+            }
+          },
+          Orkut::Constants::Fields::ID     => request_id.to_s+'-'+Orkut::Constants::MethodNames::PEOPLE_UPDATE,
+          Orkut::Constants::Fields::METHOD => Orkut::Constants::MethodNames::PEOPLE_UPDATE
+        }]
+        MultiJson.decode(post_v1(nil, params.to_s, default_headers).body)
+      end
     end
   end
 end

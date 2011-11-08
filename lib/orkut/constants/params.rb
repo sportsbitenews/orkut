@@ -29,8 +29,6 @@ module Orkut
       MSG_ID            = 'msgId'
       NOTIFICATION      = 'notification'
       OWNER_ID          = 'ownerId'
-      PERSON            = 'person'
-      PERSON_ID         = 'personId'
       RELEVANT_USER_IDS = 'relevantUserIds'
       SORT_BY           = 'sortBy'
       TYPE              = 'type'

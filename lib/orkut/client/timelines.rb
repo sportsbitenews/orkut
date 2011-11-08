@@ -59,15 +59,13 @@ module Orkut
         unless options[:page_token].blank?
           params[Orkut::Constants::Fields::PAGE_TOKEN] = options[:page_token]
         end
-	result = execute(Orkut::Constants::Fields::ACTIVITIES, Orkut::Constants::Action::LIST, params)
-	begin        
-	  MultiJson.decode(result)
+        result = execute(Orkut::Constants::Fields::ACTIVITIES, Orkut::Constants::Action::LIST, params)
+        begin
+          MultiJson.decode(result)
         rescue StandardError => exception
-	  puts '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'
-	  puts exception.message
-	  puts result.inspect
-	  puts params.inspect
-	  puts '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'
+          puts exception.message
+          puts result.inspect
+          puts params.inspect
         end
       end
 
@@ -84,6 +82,24 @@ module Orkut
         end
         MultiJson.decode(execute(Orkut::Constants::Fields::ACTIVITIES, Orkut::Constants::Action::LIST, params))
       end
+
+      #def insert_post_v1(options={})
+      #  raise(Orkut::Error, 'Parameters body and title cannot be nil') if options[:body].blank? or options[:title].blank?
+      #  params = [{
+      #    Orkut::Constants::Fields::PARAMS => {
+      #      Orkut::Constants::Fields::GROUP_ID    => Orkut::Constants::Group::SELF,
+      #      Orkut::Constants::Fields::USER_ID     => Orkut::Constants::InternalConstants::USERID_VIEWER,
+      #      Orkut::Constants::Fields::APP_ID      => Orkut::Constants::InternalConstants::Values::APP,
+      #      Orkut::Constants::Fields::ACTIVITY    => {
+      #          Orkut::Constants::Fields::BODY  => options[:body],
+      #          Orkut::Constants::Fields::TITLE => options[:title]
+      #      }
+      #    },
+      #    Orkut::Constants::Fields::ID     => request_id.to_s+'-'+Orkut::Constants::MethodNames::CREATE_ACTIVITIES,
+      #    Orkut::Constants::Fields::METHOD => Orkut::Constants::MethodNames::CREATE_ACTIVITIES
+      #  }]
+      #  MultiJson.decode(post_v1(nil, params.to_s, default_headers).body)
+      #end
     end
   end
 end
