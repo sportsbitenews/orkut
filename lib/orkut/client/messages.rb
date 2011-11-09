@@ -30,7 +30,7 @@ module Orkut
           Orkut::Constants::Fields::PARAMS => {
             Orkut::Constants::Fields::MESSAGE_TYPE => Orkut::Constants::InternalConstants::Values::PUBLIC_MESSAGE,
             Orkut::Constants::Fields::GROUP_ID     => Orkut::Constants::Group::SELF,
-            Orkut::Constants::Fields::USER_ID      => options[:user_id],
+            Orkut::Constants::Fields::USER_ID      => (options[:user_id] || Orkut::Constants::InternalConstants::USERID_VIEWER),
             Orkut::Constants::Fields::MESSAGE => {
               Orkut::Constants::Fields::BODY  => options[:body]
             }
