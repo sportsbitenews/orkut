@@ -52,6 +52,7 @@ module Orkut
       FROM_USER_PROFILE = 'fromUserProfile'
       GENDER = 'gender'
       GROUP_ID = 'groupId'
+      LANGUAGE = 'hl'
       KIND = 'kind'
       ID = 'id'
 

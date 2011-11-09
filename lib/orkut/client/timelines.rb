@@ -54,6 +54,7 @@ module Orkut
           Orkut::Constants::Fields::COLLECTION   => Orkut::Constants::Collection::STREAM,
           Orkut::Constants::Fields::ALT          => Orkut::Constants::Params::JSON,
           Orkut::Constants::Fields::MAX_RESULTS  => (options[:count] || Orkut::Client::Base::DEFAULT_COUNT).to_s,
+          Orkut::Constants::Fields::LANGUAGE     => (options[:language] || Orkut::Client::Base::DEFAULT_LANGUAGE),
           Orkut::Constants::Fields::EXTRA_PARAMS => options
         }
         unless options[:page_token].blank?
@@ -75,6 +76,7 @@ module Orkut
           Orkut::Constants::Fields::COLLECTION   => Orkut::Constants::Collection::SCRAPS,
           Orkut::Constants::Fields::ALT          => Orkut::Constants::Params::JSON,
           Orkut::Constants::Fields::MAX_RESULTS  => (options[:count] || Orkut::Client::Base::DEFAULT_COUNT).to_s,
+          Orkut::Constants::Fields::LANGUAGE     => (options[:language] || Orkut::Client::Base::DEFAULT_LANGUAGE),
           Orkut::Constants::Fields::EXTRA_PARAMS => options
         }
         unless options[:page_token].blank?
