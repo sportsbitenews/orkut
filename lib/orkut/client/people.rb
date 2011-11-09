@@ -26,6 +26,7 @@ module Orkut
         MultiJson.decode(post_v1(nil, params.to_s, default_headers).body)
       end
 
+      #[{"id"=>"1-people.get", "data"=>{"gender"=>"male", "status"=>"Realização de Testes via Agregador", "profileUrl"=>"/Profile.aspx?uid=143766589716977679&mt=os", "addresses"=>[{"region"=>"São Paulo", "locality"=>"São Paulo", "type"=>"currentLocation", "country"=>"BR"}], "isViewer"=>true, "id"=>"13930868467330630793", "thumbnailUrl"=>"http://img6.orkut.com/images/small/662/5462662.jpg", "name"=>{"familyName"=>"Bersani Pereira", "givenName"=>"Ygor Eduardo"}, "currentLocation"=>{"region"=>"São Paulo", "locality"=>"São Paulo", "longitude"=>0.0, "latitude"=>0.0, "type"=>"currentLocation", "country"=>"BR"}}}]
       def get_person_full_profile(options={})
         params = [{
           Orkut::Constants::Fields::PARAMS => {

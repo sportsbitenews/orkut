@@ -7,7 +7,7 @@ module Orkut
       include Base
 
       def post_message(options={})
-        raise(Orkut::Error, "Parameters title and body cannot be nil") if options[:title].blank? and options[:body].blank?
+        raise(Orkut::Error, "Parameters body cannot be nil") if options[:body].blank?
         params = [{
           Orkut::Constants::Fields::PARAMS => {
             Orkut::Constants::Fields::GROUP_ID => Orkut::Constants::Group::SELF,
