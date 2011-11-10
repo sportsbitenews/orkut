@@ -10,6 +10,7 @@ module Orkut
         raise(Orkut::Error, "Parameters body cannot be nil") if options[:body].blank?
         params = [{
           Orkut::Constants::Fields::PARAMS => {
+            Orkut::Constants::Fields::MESSAGE_TYPE => Orkut::Constants::InternalConstants::Values::PUBLIC_MESSAGE,
             Orkut::Constants::Fields::GROUP_ID => Orkut::Constants::Group::SELF,
             Orkut::Constants::Fields::USER_ID  => Orkut::Constants::InternalConstants::USERID_VIEWER,
             Orkut::Constants::Fields::APP_ID   => Orkut::Constants::InternalConstants::Values::APP,

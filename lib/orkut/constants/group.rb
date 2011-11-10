@@ -9,11 +9,5 @@ module Orkut
       # User guid only
       SELF           = '@self'
     end
-
-    module Collection
-      ALL    = 'all'
-      SCRAPS = 'scraps'
-      STREAM = 'stream'
-    end
   end
 end
