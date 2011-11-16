@@ -11,7 +11,7 @@ module Orkut
       req.set_form_data('client_id' => client_id, 'client_secret' => client_secret, 'refresh_token' => credentials[:refresh_token], 'grant_type' => 'refresh_token')
       req.content_type = 'application/x-www-form-urlencoded'
       puts req.inspect
-      res = Net::HTTP.start(uri.hostname, uri.port) do |http|
+      res = Net::HTTP.start(uri.host, uri.port) do |http|
         http.request(req)
       end
       puts res.body
