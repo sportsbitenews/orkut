@@ -14,7 +14,13 @@ module Orkut
       res = Net::HTTP.start(uri.host, uri.port) do |http|
         http.request(req)
       end
-      puts res.body
+      case res
+      when Net::HTTPSuccess, Net::HTTPRedirection
+        # OK
+        puts res.body
+      else
+        res.error!
+      end
     end
     
     # Make a regular GET request using AccessToken
