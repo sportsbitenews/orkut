@@ -7,7 +7,13 @@ module Orkut
 
     def get_refresh_access_token
       uri = URI('https://accounts.google.com/o/oauth2/token')
-      res = Net::HTTP.post_form(uri, 'client_id' => client_id, 'client_secret' => client_secret, 'refresh_token' => credentials[:refresh_token], 'grant_type' => 'refresh_token')
+      req = Net::HTTP::Post.new(uri.path)
+      req.set_form_data('client_id' => client_id, 'client_secret' => client_secret, 'refresh_token' => credentials[:refresh_token], 'grant_type' => 'refresh_token')
+      req.content_type = 'application/x-www-form-urlencoded'
+      puts req.inspect
+      res = Net::HTTP.start(uri.hostname, uri.port) do |http|
+        http.request(req)
+      end
       puts res.body
     end
     
