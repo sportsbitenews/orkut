@@ -1,7 +1,15 @@
 require 'orkut/error'
+require 'net/http'
+require 'uri'
 module Orkut
   # Defines HTTP request methods
   module Request
+
+    def get_refresh_token
+      uri = URI('https://accounts.google.com/o/oauth2/token')
+      res = Net::HTTP.post_form(uri, 'client_id' => client_id, 'client_secret' => client_secret, 'refresh_token' => credentials[:refresh_token], 'grant_type' => 'refresh_token')
+      puts res.body
+    end
     
     # Make a regular GET request using AccessToken
     #

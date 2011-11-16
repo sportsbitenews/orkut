@@ -69,9 +69,9 @@ module Orkut
               end
           end
 
-	  if refresh_token.blank? and access_token.blank? and expires_in.blank? and issued_at.blank?
+	        if refresh_token.blank? and access_token.blank? and expires_in.blank? and issued_at.blank?
              @client.authorization.fetch_access_token!
-	  end
+	        end
 
           update_token_values(@client.authorization)
 
