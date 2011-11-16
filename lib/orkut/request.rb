@@ -4,8 +4,8 @@ module Orkut
   module Request
 
     def get_refresh_access_token
-      res = connection.authorization.fetch_access_token!
-      puts res.inspect
+      res = credentials
+      res = connection.authorization.fetch_access_token! if connection.authorization.expired?
       res
     end
     
