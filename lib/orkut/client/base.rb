@@ -34,6 +34,10 @@ module Orkut
           raise(Orkut::Error, 'Invalid datetime')
         end
       end
+
+      def get_refresh_token
+        get_refresh_access_token
+      end
     end
   end
 end
